@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">Assessment1</string>
+    <string name="app_name">Konversi Suhu</string>
+    <string name="menu_about">Tentang Aplikasi</string>
+    <string name="menu_theme">Ganti Tema</string>
+    <string name="menu">Menu</string>
+    <string name="home_screen_text">Ini Home Screen</string>
 </resources>
