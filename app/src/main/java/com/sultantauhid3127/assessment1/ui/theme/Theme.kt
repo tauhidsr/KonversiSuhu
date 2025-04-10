@@ -1,6 +1,5 @@
 package com.sultantauhid3127.assessment1.ui.theme
 
-import android.app.Activity
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
@@ -10,6 +9,19 @@ import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
+
+@Composable
+fun KonversiSuhuTheme(
+    useDarkTheme: Boolean = false,
+    content: @Composable () -> Unit
+) {
+    val colorScheme = if (useDarkTheme) darkColorScheme() else lightColorScheme()
+    MaterialTheme(
+        colorScheme = colorScheme,
+        typography = Typography,
+        content = content
+    )
+}
 
 private val DarkColorScheme = darkColorScheme(
     primary = Purple80,
