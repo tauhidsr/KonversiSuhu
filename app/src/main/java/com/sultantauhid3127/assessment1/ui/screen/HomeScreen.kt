@@ -12,9 +12,11 @@ import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -41,11 +43,18 @@ fun HomeScreen(navController: NavController, onChangeTheme: () -> Unit) {
         topBar = {
             TopAppBar(
                 title = {
-                    Text(text = stringResource(id = R.string.app_name))
+                    Text(
+                        text = stringResource(id = R.string.app_name),
+                        color = MaterialTheme.colorScheme.onPrimary
+                    )
                 },
                 actions = {
                     IconButton(onClick = { showMenu = !showMenu}) {
-                        Icon(Icons.Default.MoreVert, contentDescription = stringResource(id = R.string.menu))
+                        Icon(
+                            Icons.Default.MoreVert,
+                            contentDescription = stringResource(id = R.string.menu),
+                            tint = MaterialTheme.colorScheme.onPrimary
+                        )
                     }
                     DropdownMenu(
                         expanded = showMenu,
@@ -66,7 +75,10 @@ fun HomeScreen(navController: NavController, onChangeTheme: () -> Unit) {
                             }
                         )
                     }
-                }
+                },
+                colors = TopAppBarDefaults.topAppBarColors(
+                    containerColor = MaterialTheme.colorScheme.primary
+                )
             )
         }
     ) { innerPadding ->
@@ -82,9 +94,11 @@ fun HomeScreen(navController: NavController, onChangeTheme: () -> Unit) {
                 contentDescription = stringResource(R.string.app_name),
                 modifier = Modifier
                     .size(120.dp)
+                    .padding(top = 32.dp)
             )
             Text(
-                text = stringResource(id = R.string.home_screen_text),
+                text = stringResource(id = R.string.app_name),
+                style = MaterialTheme.typography.headlineMedium,
                 modifier = Modifier.padding(top = 16.dp)
             )
         }
