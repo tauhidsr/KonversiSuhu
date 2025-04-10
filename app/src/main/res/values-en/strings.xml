@@ -9,4 +9,6 @@
     <string name="back">Back</string>
     <string name="convert_screen_text">This is Convert Screen</string>
     <string name="about_screen_text">This is About Screen</string>
+    <string name="label_input_suhu">Temperature input</string>
+    <string name="label_jenis_suhu">Temperature type</string>
 </resources>

@@ -8,4 +8,7 @@
     <string name="back">Kembali</string>
     <string name="convert_screen_text">Ini Convert Screen</string>
     <string name="about_screen_text">Ini About Screen</string>
+    <string name="label_input_suhu">Input suhu</string>
+    <string name="label_jenis_suhu">Jenis suhu</string>
+
 </resources>
