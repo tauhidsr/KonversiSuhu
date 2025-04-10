@@ -2,11 +2,15 @@ package com.sultantauhid3127.assessment1.ui.screen
 
 import android.content.res.Configuration
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.MoreVert
+import androidx.compose.material3.Button
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -83,24 +87,38 @@ fun HomeScreen(navController: NavController, onChangeTheme: () -> Unit) {
         }
     ) { innerPadding ->
 
-        androidx.compose.foundation.layout.Column(
+        Column(
             modifier = Modifier
                 .padding(innerPadding)
                 .fillMaxSize(),
-            horizontalAlignment = Alignment.CenterHorizontally
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
         ) {
+            Spacer(modifier = Modifier.size(16.dp))
+
             Image(
                 painter = painterResource(id = R.drawable.logo),
                 contentDescription = stringResource(R.string.app_name),
                 modifier = Modifier
-                    .size(120.dp)
-                    .padding(top = 32.dp)
+                    .size(190.dp)
             )
+
+            Spacer(modifier = Modifier.size(16.dp))
+
             Text(
                 text = stringResource(id = R.string.app_name),
                 style = MaterialTheme.typography.headlineMedium,
-                modifier = Modifier.padding(top = 16.dp)
             )
+
+            Spacer(modifier = Modifier.size(90.dp))
+
+            Button(
+                onClick = {
+                    navController.navigate(Screen.Convert.route)
+                }
+            ) {
+                Text(text = stringResource(R.string.button_start))
+            }
         }
     }
 }
