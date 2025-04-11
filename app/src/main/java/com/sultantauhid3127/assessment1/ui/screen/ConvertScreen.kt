@@ -1,5 +1,6 @@
 package com.sultantauhid3127.assessment1.ui.screen
 
+import android.content.Intent
 import android.content.res.Configuration
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -176,6 +177,21 @@ fun ConvertScreen(navController: NavController) {
                     text = hasilKonversi,
                     style = MaterialTheme.typography.titleMedium
                 )
+
+                Spacer(modifier = Modifier.height(8.dp))
+
+                Button(
+                    onClick = {
+                        val shareIntent = Intent(Intent.ACTION_SEND).apply {
+                            type = "text/plain"
+                            putExtra(Intent.EXTRA_TEXT, hasilKonversi)
+                        }
+                        context.startActivity(Intent.createChooser(shareIntent,context.getString(R.string.share_title)))
+                    },
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    Text(text = stringResource(R.string.share))
+                }
             }
         }
     }

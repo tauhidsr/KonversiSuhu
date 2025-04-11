@@ -16,4 +16,6 @@
     <string name="kelvin">Kelvin</string>
     <string name="convert">Konversi</string>
     <string name="input_invalid">Input suhu tidak valid</string>
+    <string name="share">Bagikan</string>
+    <string name="share_title">Bagikan hasil konversi</string>
 </resources>

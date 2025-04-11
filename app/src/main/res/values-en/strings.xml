@@ -17,4 +17,6 @@
     <string name="kelvin">Kelvin</string>
     <string name="convert">Convert</string>
     <string name="input_invalid">Temperature input not valid</string>
+    <string name="share">Share</string>
+    <string name="share_title">Share the conrversion result</string>
 </resources>
