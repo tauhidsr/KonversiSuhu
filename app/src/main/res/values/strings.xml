@@ -15,5 +15,5 @@
     <string name="fahrenheit">Fahrenheit</string>
     <string name="kelvin">Kelvin</string>
     <string name="convert">Konversi</string>
-
+    <string name="input_invalid">Input suhu tidak valid</string>
 </resources>

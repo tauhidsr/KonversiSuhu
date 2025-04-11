@@ -16,4 +16,5 @@
     <string name="fahrenheit">Fahrenheit</string>
     <string name="kelvin">Kelvin</string>
     <string name="convert">Convert</string>
+    <string name="input_invalid">Temperature input not valid</string>
 </resources>
