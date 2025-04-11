@@ -10,5 +10,8 @@
     <string name="about_screen_text">Ini About Screen</string>
     <string name="label_input_suhu">Input suhu</string>
     <string name="label_jenis_suhu">Jenis suhu</string>
-
+    <string name="label_konversi_ke">Konversi ke</string>
+    <string name="celsius">Celsius</string>
+    <string name="fahrenheit">Fahrenheit</string>
+    <string name="kelvin">Kelvin</string>
 </resources>

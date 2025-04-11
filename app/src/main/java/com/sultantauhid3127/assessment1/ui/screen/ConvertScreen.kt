@@ -3,6 +3,7 @@ package com.sultantauhid3127.assessment1.ui.screen
 import android.content.res.Configuration
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -31,9 +32,20 @@ import com.sultantauhid3127.assessment1.ui.theme.Assessment1Theme
 @Composable
 fun ConvertScreen(navController: NavController) {
     var suhuInput by rememberSaveable { mutableStateOf("") }
-    val jenisSuhuList = listOf("Celsius", "Fahrenheit", "Kelvin")
+    val jenisSuhuList = listOf(
+        stringResource(R.string.celsius),
+        stringResource(R.string.fahrenheit),
+        stringResource(R.string.kelvin)
+    )
     var expanded by remember { mutableStateOf(false) }
     var selectedSuhu by rememberSaveable { mutableStateOf(jenisSuhuList[0]) }
+
+    val suhuTujuanList = listOf(
+        stringResource(R.string.celsius),
+        stringResource(R.string.fahrenheit),
+        stringResource(R.string.kelvin)
+    )
+    var suhuTujuan by rememberSaveable { mutableStateOf(suhuTujuanList[0]) }
 
     Scaffold(
         topBar = {
@@ -100,7 +112,29 @@ fun ConvertScreen(navController: NavController) {
                         )
                     }
                 }
+            }
 
+            Spacer(modifier = Modifier.height(24.dp))
+
+            Text(
+                text = stringResource(R.string.label_konversi_ke),
+                style = MaterialTheme.typography.titleMedium,
+                modifier = Modifier.align(Alignment.Start)
+            )
+
+            suhuTujuanList.forEach { tujuan ->
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(vertical = 4.dp)
+                ) {
+                    RadioButton(
+                        selected = (tujuan == suhuTujuan),
+                        onClick = { suhuTujuan = tujuan}
+                    )
+                    Text(text = tujuan)
+                }
             }
         }
     }
