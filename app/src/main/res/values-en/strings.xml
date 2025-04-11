@@ -19,4 +19,5 @@
     <string name="input_invalid">Temperature input not valid</string>
     <string name="share">Share</string>
     <string name="share_title">Share the conrversion result</string>
+    <string name="input_section_title">Input the temperature and choose the type of temperature</string>
 </resources>

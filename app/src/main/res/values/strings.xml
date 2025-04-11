@@ -18,4 +18,5 @@
     <string name="input_invalid">Input suhu tidak valid</string>
     <string name="share">Bagikan</string>
     <string name="share_title">Bagikan hasil konversi</string>
+    <string name="input_section_title">Masukkan suhu dan pilih jenis suhunya</string>
 </resources>

@@ -62,16 +62,23 @@ fun ConvertScreen(navController: NavController) {
         topBar = {
             TopAppBar(
                 title = {
-                    Text(text = stringResource(R.string.app_name))
+                    Text(
+                        text = stringResource(R.string.app_name),
+                        color = MaterialTheme.colorScheme.onPrimary
+                    )
                 },
                 navigationIcon = {
                     IconButton(onClick = {navController.popBackStack()}) {
                         Icon(
                             imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                            contentDescription = stringResource(R.string.back)
+                            contentDescription = stringResource(R.string.back),
+                            tint = MaterialTheme.colorScheme.onPrimary
                         )
                     }
-                }
+                },
+                colors = TopAppBarDefaults.topAppBarColors(
+                    containerColor = MaterialTheme.colorScheme.primary
+                )
             )
         },
         snackbarHost = { SnackbarHost(snackbarHostState)}
@@ -84,6 +91,14 @@ fun ConvertScreen(navController: NavController) {
             verticalArrangement = Arrangement.Top,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
+            Text(
+                text = stringResource(R.string.input_section_title),
+                style = MaterialTheme.typography.titleMedium,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(bottom = 8.dp)
+            )
+
             OutlinedTextField(
                 value = suhuInput,
                 onValueChange = { suhuInput = it},
