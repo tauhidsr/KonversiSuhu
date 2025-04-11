@@ -19,4 +19,9 @@
     <string name="share">Bagikan</string>
     <string name="share_title">Bagikan hasil konversi</string>
     <string name="input_section_title">Masukkan suhu dan pilih jenis suhunya</string>
+    <string name="about">Tentang Aplikasi</string>
+    <string name="about_description">
+        Aplikasi Konversi Suhu ini memungkinkan Anda mengubah suhu antara Celsius, Fahrenheit, dan Kelvin dengan mudah. Dirancang menggunakan Jetpack Compose, aplikasi ini mendukung tema gelap/terang, dua bahasa, validasi input, dan fitur berbagi hasil konversi.
+        \n\nAplikasi ini dibuat untuk Assessment mobpro 1. \n\nCopyrigth © 2024 - 2025 Sultan Tauhid.\nAll right reserved.
+    </string>
 </resources>

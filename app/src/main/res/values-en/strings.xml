@@ -20,4 +20,9 @@
     <string name="share">Share</string>
     <string name="share_title">Share the conrversion result</string>
     <string name="input_section_title">Input the temperature and choose the type of temperature</string>
+    <string name="about">About App</string>
+    <string name="about_description">
+        This Temperature Converter app allows you to convert temperatures between Celsius, Fahrenheit, and Kelvin easily. Built with Jetpack Compose, the app supports dark/light themes, bilingual support, input validation, and sharing converted results.
+        \n\nThis application is made for Assessment mobpro 1. \n\nCopyrigth © 2024 - 2025 Sultan Tauhid.\nAll right reserved.
+    </string>
 </resources>
