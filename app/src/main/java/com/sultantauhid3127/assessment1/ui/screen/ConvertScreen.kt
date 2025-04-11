@@ -37,21 +37,15 @@ import kotlinx.coroutines.launch
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ConvertScreen(navController: NavController) {
-    var suhuInput by rememberSaveable { mutableStateOf("") }
+    var inputSuhu by rememberSaveable { mutableStateOf("") }
     val jenisSuhuList = listOf(
         stringResource(R.string.celsius),
         stringResource(R.string.fahrenheit),
         stringResource(R.string.kelvin)
     )
-    var expanded by remember { mutableStateOf(false) }
-    var selectedSuhu by rememberSaveable { mutableStateOf(jenisSuhuList[0]) }
-
-    val suhuTujuanList = listOf(
-        stringResource(R.string.celsius),
-        stringResource(R.string.fahrenheit),
-        stringResource(R.string.kelvin)
-    )
-    var suhuTujuan by rememberSaveable { mutableStateOf(suhuTujuanList[0]) }
+    var dropdownExpanded by remember { mutableStateOf(false) }
+    var suhuAwal by rememberSaveable { mutableStateOf(jenisSuhuList[0]) }
+    var suhuTujuan by rememberSaveable { mutableStateOf(jenisSuhuList[1]) }
 
     var hasilKonversi by rememberSaveable { mutableStateOf("") }
     val snackbarHostState = remember { SnackbarHostState() }
@@ -100,8 +94,8 @@ fun ConvertScreen(navController: NavController) {
             )
 
             OutlinedTextField(
-                value = suhuInput,
-                onValueChange = { suhuInput = it},
+                value = inputSuhu,
+                onValueChange = { inputSuhu = it},
                 label = { Text(stringResource(id = R.string.label_input_suhu))},
                 modifier = Modifier.fillMaxWidth(),
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
@@ -111,16 +105,16 @@ fun ConvertScreen(navController: NavController) {
             Spacer(modifier = Modifier.height(16.dp))
 
             ExposedDropdownMenuBox(
-                expanded = expanded,
-                onExpandedChange = {expanded = !expanded}
+                expanded = dropdownExpanded,
+                onExpandedChange = {dropdownExpanded = !dropdownExpanded}
             ) {
                 OutlinedTextField(
-                    value = selectedSuhu,
+                    value = suhuAwal,
                     onValueChange = {},
                     readOnly = true,
-                    label = { Text(stringResource(id = R.string.label_input_suhu))},
+                    label = { Text(stringResource(id = R.string.label_suhu_awal))},
                     trailingIcon = {
-                        ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded)
+                        ExposedDropdownMenuDefaults.TrailingIcon(expanded = dropdownExpanded)
                     },
                     modifier = Modifier
                         .menuAnchor(MenuAnchorType.PrimaryNotEditable, enabled = true)
@@ -128,15 +122,18 @@ fun ConvertScreen(navController: NavController) {
                 )
 
                 ExposedDropdownMenu(
-                    expanded = expanded,
-                    onDismissRequest = {expanded = false}
+                    expanded = dropdownExpanded,
+                    onDismissRequest = {dropdownExpanded = false}
                 ) {
                     jenisSuhuList.forEach { suhu ->
                         DropdownMenuItem(
                             text = { Text(suhu)},
                             onClick = {
-                                selectedSuhu = suhu
-                                expanded = false
+                                suhuAwal = suhu
+                                dropdownExpanded = false
+                                if (suhuTujuan == suhu) {
+                                    suhuTujuan = jenisSuhuList.first{it != suhu}
+                                }
                             }
                         )
                     }
@@ -151,8 +148,8 @@ fun ConvertScreen(navController: NavController) {
                 modifier = Modifier.align(Alignment.Start)
             )
 
-            suhuTujuanList.forEach { tujuan ->
-                val isDisabled = tujuan == selectedSuhu
+            jenisSuhuList.forEach { tujuan ->
+                val isDisabled = tujuan == suhuAwal
                 Row(
                     verticalAlignment = Alignment.CenterVertically,
                     modifier = Modifier
@@ -178,11 +175,10 @@ fun ConvertScreen(navController: NavController) {
 
             Button(
                 onClick = {
-                    val suhu = suhuInput.toDoubleOrNull()
+                    val suhu = inputSuhu.toDoubleOrNull()
                     if (suhu != null) {
-                        val hasil = konversiSuhu(suhu, selectedSuhu, suhuTujuan)
-                        val hasilFormat = "%.3f".format(hasil)
-                        hasilKonversi = "$suhu $selectedSuhu = $hasilFormat $suhuTujuan"
+                        val hasil = konversiSuhu(suhu, suhuAwal, suhuTujuan)
+                        hasilKonversi = "$suhu $suhuAwal = %.3f $suhuTujuan".format(hasil)
                     } else {
                         hasilKonversi = ""
                         coroutineScope.launch {
