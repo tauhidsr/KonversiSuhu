@@ -11,8 +11,9 @@
     <string name="about_screen_text">This is About Screen</string>
     <string name="label_input_suhu">Temperature input</string>
     <string name="label_jenis_suhu">Temperature type</string>
-    <string name="label_konversi_ke">Convert to</string>
+    <string name="label_konversi_ke">Convert to :</string>
     <string name="celsius">Celsius</string>
     <string name="fahrenheit">Fahrenheit</string>
     <string name="kelvin">Kelvin</string>
+    <string name="convert">Convert</string>
 </resources>

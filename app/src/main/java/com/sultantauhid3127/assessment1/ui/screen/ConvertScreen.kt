@@ -47,6 +47,8 @@ fun ConvertScreen(navController: NavController) {
     )
     var suhuTujuan by rememberSaveable { mutableStateOf(suhuTujuanList[0]) }
 
+    var hasilKonversi by rememberSaveable { mutableStateOf("") }
+
     Scaffold(
         topBar = {
             TopAppBar(
@@ -136,7 +138,49 @@ fun ConvertScreen(navController: NavController) {
                     Text(text = tujuan)
                 }
             }
+
+            Spacer(modifier = Modifier.height(16.dp))
+
+            Button(
+                onClick = {
+                    val suhu = suhuInput.toDoubleOrNull()
+                    if (suhu != null) {
+                        val hasil = konversiSuhu(suhu, selectedSuhu, suhuTujuan)
+                        hasilKonversi = "$suhu $selectedSuhu = $hasil $suhuTujuan"
+                    } else {
+                        hasilKonversi = ""
+                    }
+                },
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Text(text = stringResource(R.string.convert))
+            }
+
+            Spacer(modifier = Modifier.height(16.dp))
+
+            if (hasilKonversi.isNotEmpty()) {
+                Text(
+                    text = hasilKonversi,
+                    style = MaterialTheme.typography.titleMedium
+                )
+            }
         }
+    }
+}
+
+fun konversiSuhu(suhu: Double, dari: String, ke: String): Double {
+    val suhuCelsius = when (dari) {
+        "Celsius" -> suhu
+        "Fahrenheit" -> (suhu - 32) *5 / 9
+        "Kelvin" -> suhu - 273.15
+        else -> suhu
+    }
+
+    return when (ke) {
+        "Celsius" -> suhuCelsius
+        "Fahrenheit" -> (suhuCelsius * 9 / 5) + 32
+        "Kelvin" -> suhuCelsius +273.15
+        else -> suhu
     }
 }
 
