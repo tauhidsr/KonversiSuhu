@@ -12,12 +12,11 @@ import com.sultantauhid3127.assessment1.ui.screen.HomeScreen
 
 @Composable
 fun NavGraph(
-    navController: NavHostController = rememberNavController(),
-    onChangeTheme: () -> Unit = {}
+    navController: NavHostController = rememberNavController()
 ) {
     NavHost(navController = navController, startDestination = Screen.Home.route) {
         composable(Screen.Home.route) {
-            HomeScreen(navController = navController, onChangeTheme = onChangeTheme)
+            HomeScreen(navController = navController)
         }
         composable(Screen.Convert.route) {
             ConvertScreen(navController = navController)

@@ -40,7 +40,7 @@ import com.sultantauhid3127.assessment1.ui.theme.Assessment1Theme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HomeScreen(navController: NavController, onChangeTheme: () -> Unit) {
+fun HomeScreen(navController: NavController) {
     var showMenu by remember { mutableStateOf(false) }
 
     Scaffold(
@@ -69,13 +69,6 @@ fun HomeScreen(navController: NavController, onChangeTheme: () -> Unit) {
                             onClick = {
                                 showMenu = false
                                 navController.navigate(Screen.About.route)
-                            }
-                        )
-                        DropdownMenuItem(
-                            text = { Text(stringResource(id = R.string.menu_theme))},
-                            onClick = {
-                                showMenu = false
-                                onChangeTheme()
                             }
                         )
                     }
@@ -129,8 +122,7 @@ fun HomeScreen(navController: NavController, onChangeTheme: () -> Unit) {
 fun HomeScreenPreview() {
     Assessment1Theme {
         HomeScreen(
-            navController = rememberNavController(),
-            onChangeTheme = {}
+            navController = rememberNavController()
         )
     }
 }

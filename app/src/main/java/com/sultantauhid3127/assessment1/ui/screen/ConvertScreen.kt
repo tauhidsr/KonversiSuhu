@@ -181,7 +181,8 @@ fun ConvertScreen(navController: NavController) {
                     val suhu = suhuInput.toDoubleOrNull()
                     if (suhu != null) {
                         val hasil = konversiSuhu(suhu, selectedSuhu, suhuTujuan)
-                        hasilKonversi = "$suhu $selectedSuhu = $hasil $suhuTujuan"
+                        val hasilFormat = "%.3f".format(hasil)
+                        hasilKonversi = "$suhu $selectedSuhu = $hasilFormat $suhuTujuan"
                     } else {
                         hasilKonversi = ""
                         coroutineScope.launch {
