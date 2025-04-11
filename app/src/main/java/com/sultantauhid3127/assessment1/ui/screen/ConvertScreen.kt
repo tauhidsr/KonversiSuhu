@@ -152,6 +152,7 @@ fun ConvertScreen(navController: NavController) {
             )
 
             suhuTujuanList.forEach { tujuan ->
+                val isDisabled = tujuan == selectedSuhu
                 Row(
                     verticalAlignment = Alignment.CenterVertically,
                     modifier = Modifier
@@ -160,9 +161,16 @@ fun ConvertScreen(navController: NavController) {
                 ) {
                     RadioButton(
                         selected = (tujuan == suhuTujuan),
-                        onClick = { suhuTujuan = tujuan}
+                        onClick = {
+                            if (!isDisabled) suhuTujuan = tujuan
+                        },
+                        enabled = !isDisabled
                     )
-                    Text(text = tujuan)
+                    Text(
+                        text = tujuan,
+                        color = if (isDisabled) MaterialTheme.colorScheme.onSurface.copy(alpha = 0.4f)
+                        else MaterialTheme.colorScheme.onSurface
+                    )
                 }
             }
 
